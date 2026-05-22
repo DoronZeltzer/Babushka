@@ -8,6 +8,7 @@ const STRINGS = {
     // Meta / titles
     pageTitleCustomer: 'בבושקה • חנות יד שניה • רגבה',
     pageTitleAdmin:    'ניהול • בבושקה',
+    pageTitleContact:  'צור קשר • בבושקה',
 
     // Header
     siteTitle:   'בבושקה',
@@ -70,11 +71,33 @@ const STRINGS = {
     confirmDelete:'למחוק את הפריט הזה?',
     quotaError:  'הזיכרון המקומי מלא. נסי להעלות פחות תמונות או למחוק פריטים ישנים.',
     saveError:   'שגיאה בשמירה: ',
+
+    // Contact page
+    navContact:        'צור קשר',
+    contactTitle:      'צור קשר',
+    contactSubtitle:   'נשמח לראות אתכם בחנות. הנה כל הדרכים להגיע אלינו.',
+    contactDetails:    'פרטי התקשרות',
+    contactPhone:      'טלפון',
+    contactAddress:    'כתובת',
+    contactAddressLine:'רחוב ההדס, רגבה 2280400',
+    contactHours:      'שעות פתיחה',
+    contactWhatsapp:   'שלחו הודעה בוואטסאפ',
+    contactGoogleMaps: 'פתח ב-Google Maps',
+    contactWaze:       'ניווט ב-Waze',
+    closed:            'סגור',
+    daySunday:         'יום ראשון',
+    dayMonday:         'יום שני',
+    dayTuesday:        'יום שלישי',
+    dayWednesday:      'יום רביעי',
+    dayThursday:       'יום חמישי',
+    dayFriday:         'יום שישי',
+    daySaturday:       'שבת',
   },
 
   en: {
     pageTitleCustomer: 'Babushka • Second-Hand Shop • Regba',
     pageTitleAdmin:    'Admin • Babushka',
+    pageTitleContact:  'Contact • Babushka',
 
     siteTitle:   'Babushka',
     taglineHome: 'Second-Hand Shop ✻ Regba',
@@ -129,6 +152,27 @@ const STRINGS = {
     confirmDelete:'Delete this item?',
     quotaError:  'Local storage is full. Try uploading fewer photos or deleting old items.',
     saveError:   'Save error: ',
+
+    // Contact page
+    navContact:        'Contact',
+    contactTitle:      'Get in touch',
+    contactSubtitle:   "We'd love to see you at the shop. Here are all the ways to reach us.",
+    contactDetails:    'Contact details',
+    contactPhone:      'Phone',
+    contactAddress:    'Address',
+    contactAddressLine:'HaHadas St, Regba 2280400, Israel',
+    contactHours:      'Opening hours',
+    contactWhatsapp:   'Message us on WhatsApp',
+    contactGoogleMaps: 'Open in Google Maps',
+    contactWaze:       'Navigate with Waze',
+    closed:            'Closed',
+    daySunday:         'Sunday',
+    dayMonday:         'Monday',
+    dayTuesday:        'Tuesday',
+    dayWednesday:      'Wednesday',
+    dayThursday:       'Thursday',
+    dayFriday:         'Friday',
+    daySaturday:       'Saturday',
   },
 };
 
@@ -185,8 +229,11 @@ const I18n = {
         if (attr && key) el.setAttribute(attr, this.t(key));
       });
     });
-    if (document.body.dataset.page === 'admin') {
+    const page = document.body.dataset.page;
+    if (page === 'admin') {
       document.title = this.t('pageTitleAdmin');
+    } else if (page === 'contact') {
+      document.title = this.t('pageTitleContact');
     } else {
       document.title = this.t('pageTitleCustomer');
     }

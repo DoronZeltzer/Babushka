@@ -681,3 +681,156 @@ h1, h2, h3 {
   padding-top: 0.5rem;
 }
 .admin-card-sold .admin-card-image img { filter: grayscale(0.4) brightness(0.9); }
+
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+
+.contact-page { padding-top: 2.5rem; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.contact-info-card,
+.contact-actions-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1.75rem 1.75rem 2rem;
+  box-shadow: var(--shadow);
+}
+
+.contact-info-card { border-top: 6px solid var(--teal); }
+.contact-actions-card { border-top: 6px solid var(--green); }
+
+.contact-info-card h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+.info-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 1.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(58, 42, 28, 0.08);
+}
+.info-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.info-icon {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--red);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-block h4 {
+  margin: 0 0 0.3rem;
+  font-family: 'Heebo', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brown-soft);
+}
+
+.info-value {
+  font-size: 1.1rem;
+  color: var(--brown);
+  text-decoration: none;
+}
+a.info-value:hover { color: var(--red); }
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+}
+.hours-table th,
+.hours-table td {
+  padding: 0.4rem 0;
+  text-align: start;
+  font-weight: 400;
+  vertical-align: top;
+}
+.hours-table th {
+  color: var(--brown);
+  font-weight: 500;
+  width: 50%;
+}
+.hours-table td {
+  color: var(--brown);
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+.hours-table .closed-cell { color: var(--red-dark); font-weight: 600; }
+.hours-table tr + tr th,
+.hours-table tr + tr td { border-top: 1px dashed rgba(58, 42, 28, 0.1); }
+
+/* Action buttons (WhatsApp, Maps, Waze) */
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+  transition: transform 0.05s, filter 0.15s;
+  box-shadow: var(--shadow);
+}
+.action-btn:hover {
+  color: white;
+  text-decoration: none;
+  filter: brightness(1.08);
+}
+.action-btn:active { transform: scale(0.98); }
+.action-btn svg { flex-shrink: 0; }
+
+.action-whatsapp { background: #25D366; }
+.action-maps     { background: #EA4335; }
+.action-waze     { background: #33CCFF; color: #0F2A5F; }
+.action-waze:hover { color: #0F2A5F; }
+
+.map-embed {
+  margin-top: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--cream);
+  border: 1px solid rgba(58, 42, 28, 0.08);
+}
+.map-embed iframe {
+  display: block;
+  width: 100%;
+  height: 320px;
+  border: 0;
+}
+
+.nav-link-active {
+  background: var(--brown);
+  color: var(--cream-light);
+}
+.nav-link-active:hover { background: var(--brown-soft); color: var(--cream-light); }
+
+@media (max-width: 760px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-info-card,
+  .contact-actions-card {
+    padding: 1.4rem 1.25rem 1.5rem;
+  }
+  .map-embed iframe { height: 260px; }
+}
