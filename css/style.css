@@ -44,6 +44,15 @@ h1, h2, h3 {
   margin: 0 0 0.5em;
 }
 
+:lang(en) h1,
+:lang(en) h2,
+:lang(en) h3,
+:lang(en) .card-title,
+:lang(en) .modal-title {
+  font-family: 'Cormorant Garamond', 'Frank Ruhl Libre', Georgia, serif;
+  letter-spacing: 0.01em;
+}
+
 .container {
   max-width: 1180px;
   margin: 0 auto;
@@ -84,13 +93,12 @@ h1, h2, h3 {
 .logo-link:hover { text-decoration: none; }
 
 .logo-img {
-  height: 64px;
-  width: 64px;
-  border-radius: 50%;
-  background: var(--cream);
-  padding: 4px;
+  height: 72px;
+  width: 72px;
+  border-radius: 12px;
   box-shadow: var(--shadow);
-  object-fit: cover;
+  object-fit: contain;
+  background: var(--teal);
 }
 
 .logo-text h1 {
@@ -133,6 +141,17 @@ h1, h2, h3 {
   color: var(--cream-light);
 }
 .nav-link-admin:hover { background: var(--red-dark); color: var(--cream-light); }
+
+.nav-link-lang {
+  background: transparent;
+  border: 2px solid var(--cream);
+  color: var(--brown);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.nav-link-lang:hover { background: var(--cream); }
 
 /* ---------- HERO ---------- */
 
@@ -264,7 +283,7 @@ h1, h2, h3 {
 .badge-sold {
   position: absolute;
   top: 0.75rem;
-  left: 0.75rem;
+  inset-inline-end: 0.75rem;
   background: var(--red);
   color: var(--cream-light);
   padding: 0.25rem 0.7rem;
@@ -275,7 +294,7 @@ h1, h2, h3 {
   box-shadow: var(--shadow);
 }
 .badge-sold-lg {
-  top: 1rem; left: 1rem;
+  top: 1rem; inset-inline-end: 1rem;
   padding: 0.4rem 1rem;
   font-size: 1rem;
 }
@@ -322,7 +341,7 @@ h1, h2, h3 {
 .modal-close {
   position: absolute;
   top: 0.5rem;
-  left: 0.5rem;
+  inset-inline-end: 0.5rem;
   background: var(--cream);
   border: none;
   width: 38px;
@@ -596,7 +615,7 @@ h1, h2, h3 {
 .preview-remove {
   position: absolute;
   top: 2px;
-  left: 2px;
+  inset-inline-end: 2px;
   width: 22px; height: 22px;
   border-radius: 50%;
   background: var(--red);

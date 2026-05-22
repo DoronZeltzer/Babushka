@@ -6,23 +6,26 @@
   <title>ניהול • בבושקה</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;500;700&family=Cormorant+Garamond:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/i18n.js"></script>
 </head>
-<body class="admin-body">
+<body class="admin-body" data-page="admin">
 
   <header class="site-header">
     <div class="header-inner">
       <a class="logo-link" href="index.html">
-        <img src="assets/logo.png" alt="בבושקה" class="logo-img" onerror="this.style.display='none'">
+        <img src="assets/logo.jpg" alt="Babushka" class="logo-img">
         <div class="logo-text">
-          <h1>בבושקה</h1>
-          <p>פאנל ניהול</p>
+          <h1 data-i18n="siteTitle">בבושקה</h1>
+          <p data-i18n="taglineAdmin">פאנל ניהול</p>
         </div>
       </a>
       <nav class="header-nav">
-        <a href="index.html" class="nav-link">לאתר →</a>
-        <button id="logout-btn" class="nav-link nav-link-admin" hidden>יציאה</button>
+        <button id="lang-toggle" class="nav-link nav-link-lang" data-i18n="langSwitch">EN</button>
+        <a href="index.html" class="nav-link" data-i18n="navToSite">← לאתר</a>
+        <button id="logout-btn" class="nav-link nav-link-admin" hidden data-i18n="navLogout">יציאה</button>
       </nav>
     </div>
   </header>
@@ -31,13 +34,13 @@
 
     <!-- Login screen -->
     <section id="login-screen" class="login-card">
-      <h2>כניסת מנהל</h2>
-      <p class="muted">הזיני את הסיסמה כדי לערוך את החנות.</p>
+      <h2 data-i18n="loginHeading">כניסת מנהל</h2>
+      <p class="muted" data-i18n="loginIntro">הזיני את הסיסמה כדי לערוך את החנות.</p>
       <form id="login-form">
-        <label for="password">סיסמה</label>
+        <label for="password" data-i18n="loginLabel">סיסמה</label>
         <input type="password" id="password" autocomplete="current-password" required>
-        <button type="submit" class="btn btn-primary">כניסה</button>
-        <p id="login-error" class="error" hidden>סיסמה שגויה</p>
+        <button type="submit" class="btn btn-primary" data-i18n="loginButton">כניסה</button>
+        <p id="login-error" class="error" hidden data-i18n="loginError">סיסמה שגויה</p>
       </form>
     </section>
 
@@ -45,55 +48,55 @@
     <section id="admin-panel" hidden>
 
       <div class="admin-toolbar">
-        <h2>הפריטים שלי</h2>
-        <button id="new-item-btn" class="btn btn-primary">+ פריט חדש</button>
+        <h2 data-i18n="myItems">הפריטים שלי</h2>
+        <button id="new-item-btn" class="btn btn-primary" data-i18n="newItem">+ פריט חדש</button>
       </div>
 
       <!-- Item form (shown for new + edit) -->
       <form id="item-form" class="item-form" hidden>
-        <h3 id="form-title">פריט חדש</h3>
+        <h3 id="form-title" data-i18n="formNewTitle">פריט חדש</h3>
 
         <div class="form-row">
-          <label for="f-title">שם הפריט *</label>
+          <label for="f-title" data-i18n="fieldTitle">שם הפריט *</label>
           <input type="text" id="f-title" required maxlength="80">
         </div>
 
         <div class="form-row form-row-double">
           <div>
-            <label for="f-price">מחיר (₪) *</label>
+            <label for="f-price" data-i18n="fieldPrice">מחיר (₪) *</label>
             <input type="number" id="f-price" required min="0" step="1">
           </div>
           <div>
-            <label for="f-category">קטגוריה *</label>
+            <label for="f-category" data-i18n="fieldCategory">קטגוריה *</label>
             <select id="f-category" required></select>
           </div>
         </div>
 
         <div class="form-row">
-          <label for="f-description">תיאור</label>
+          <label for="f-description" data-i18n="fieldDescription">תיאור</label>
           <textarea id="f-description" rows="4" maxlength="500"></textarea>
         </div>
 
         <div class="form-row">
-          <label for="f-images">תמונות (אפשר לבחור כמה)</label>
+          <label for="f-images" data-i18n="fieldImages">תמונות (אפשר לבחור כמה)</label>
           <input type="file" id="f-images" accept="image/*" multiple>
           <div id="image-previews" class="image-previews"></div>
         </div>
 
         <div class="form-row form-row-inline">
           <input type="checkbox" id="f-sold">
-          <label for="f-sold">פריט נמכר (יוצג עם תווית "נמכר")</label>
+          <label for="f-sold" data-i18n="fieldSold">פריט נמכר (יוצג עם תווית "נמכר")</label>
         </div>
 
         <div class="form-actions">
-          <button type="submit" class="btn btn-primary">שמירה</button>
-          <button type="button" id="cancel-btn" class="btn btn-ghost">ביטול</button>
+          <button type="submit" class="btn btn-primary" data-i18n="save">שמירה</button>
+          <button type="button" id="cancel-btn" class="btn btn-ghost" data-i18n="cancel">ביטול</button>
         </div>
       </form>
 
       <div id="admin-grid" class="admin-grid"></div>
 
-      <p id="admin-empty" class="empty-state" hidden>
+      <p id="admin-empty" class="empty-state" hidden data-i18n="emptyAdmin">
         אין עדיין פריטים. לחצי על "פריט חדש" כדי להתחיל.
       </p>
 
@@ -103,7 +106,7 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <p>בבושקה • פאנל ניהול</p>
+      <p data-i18n="footerAdmin">בבושקה • פאנל ניהול</p>
     </div>
   </footer>
 

@@ -11,11 +11,11 @@
 
   function renderFilters() {
     const frag = document.createDocumentFragment();
-    CATEGORIES.forEach(cat => {
+    CATEGORY_IDS.forEach(id => {
       const btn = document.createElement('button');
       btn.className = 'chip';
-      btn.dataset.cat = cat.id;
-      btn.textContent = cat.label;
+      btn.dataset.cat = id;
+      btn.textContent = I18n.cat(id);
       frag.appendChild(btn);
     });
     filtersEl.appendChild(frag);
@@ -57,12 +57,12 @@
       <div class="card-image">
         ${imgUrl
           ? `<img src="${escapeAttr(imgUrl)}" alt="${escapeAttr(item.title)}" loading="lazy">`
-          : `<div class="card-placeholder">אין תמונה</div>`}
-        ${item.sold ? '<span class="badge-sold">נמכר</span>' : ''}
+          : `<div class="card-placeholder">${I18n.t('noImage')}</div>`}
+        ${item.sold ? `<span class="badge-sold">${I18n.t('soldBadge')}</span>` : ''}
       </div>
       <div class="card-body">
         <h3 class="card-title">${escapeHtml(item.title)}</h3>
-        <p class="card-category">${escapeHtml(categoryLabel(item.category))}</p>
+        <p class="card-category">${escapeHtml(I18n.cat(item.category))}</p>
         <p class="card-price">${formatPrice(item.price)}</p>
       </div>
     `;
@@ -82,8 +82,8 @@
       <div class="modal-image">
         ${mainImg
           ? `<img id="modal-main-img" src="${escapeAttr(mainImg)}" alt="${escapeAttr(item.title)}">`
-          : `<div class="card-placeholder modal-placeholder">אין תמונה</div>`}
-        ${item.sold ? '<span class="badge-sold badge-sold-lg">נמכר</span>' : ''}
+          : `<div class="card-placeholder modal-placeholder">${I18n.t('noImage')}</div>`}
+        ${item.sold ? `<span class="badge-sold badge-sold-lg">${I18n.t('soldBadge')}</span>` : ''}
       </div>
       ${images.length > 1 ? `
         <div class="modal-thumbs">
@@ -95,7 +95,7 @@
         </div>
       ` : ''}
       <div class="modal-details">
-        <p class="modal-category">${escapeHtml(categoryLabel(item.category))}</p>
+        <p class="modal-category">${escapeHtml(I18n.cat(item.category))}</p>
         <h2 class="modal-title">${escapeHtml(item.title)}</h2>
         <p class="modal-price">${formatPrice(item.price)}</p>
         ${item.description
@@ -104,7 +104,7 @@
         <a href="https://www.facebook.com/babushka.regba/"
            target="_blank" rel="noopener"
            class="btn btn-primary modal-cta">
-          ${item.sold ? 'הפריט נמכר — צרו קשר לפריטים דומים' : 'צרו קשר דרך פייסבוק'}
+          ${item.sold ? I18n.t('contactSoldCta') : I18n.t('contactCta')}
         </a>
       </div>
     `;
@@ -146,6 +146,11 @@
   function escapeAttr(str) {
     return escapeHtml(str).replaceAll('"', '&quot;');
   }
+
+  // Apply translations to static markup before rendering dynamic content.
+  I18n.applyToDOM();
+
+  document.getElementById('lang-toggle').addEventListener('click', () => I18n.toggle());
 
   renderFilters();
   renderGrid();

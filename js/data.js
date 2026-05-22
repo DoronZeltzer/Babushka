@@ -8,15 +8,10 @@ const AUTH_KEY = 'babushka.auth.v1';
 // Change this password before sharing the admin URL.
 const ADMIN_PASSWORD = 'babushka2026';
 
-const CATEGORIES = [
-  { id: 'furniture', label: 'רהיטים' },
-  { id: 'clothing',  label: 'בגדים' },
-  { id: 'house',     label: 'כלי בית' },
-  { id: 'decor',     label: 'אומנות ודקורציה' },
-  { id: 'toys',      label: 'צעצועים ומשחקים' },
-  { id: 'books',     label: 'ספרים' },
-  { id: 'jewelry',   label: 'תכשיטים ואקססוריז' },
-  { id: 'other',     label: 'שונות' },
+// Just the IDs — the display labels live in js/i18n.js (CATEGORY_LABELS).
+const CATEGORY_IDS = [
+  'furniture', 'clothing', 'house', 'decor',
+  'toys', 'books', 'jewelry', 'other',
 ];
 
 const SEED_ITEMS = [
@@ -156,11 +151,7 @@ const Auth = {
   },
 };
 
-function categoryLabel(id) {
-  const c = CATEGORIES.find(c => c.id === id);
-  return c ? c.label : id;
-}
-
 function formatPrice(n) {
-  return '₪' + Number(n).toLocaleString('he-IL');
+  const locale = (typeof I18n !== 'undefined' && I18n.current === 'en') ? 'en-US' : 'he-IL';
+  return '₪' + Number(n).toLocaleString(locale);
 }

@@ -60,8 +60,8 @@
   // --- CATEGORY SELECT ---
 
   function populateCategories() {
-    fCategory.innerHTML = CATEGORIES
-      .map(c => `<option value="${c.id}">${c.label}</option>`)
+    fCategory.innerHTML = CATEGORY_IDS
+      .map(id => `<option value="${id}">${I18n.cat(id)}</option>`)
       .join('');
   }
 
@@ -70,10 +70,10 @@
   function openFormForNew() {
     editingId = null;
     pendingImages = [];
-    formTitle.textContent = 'פריט חדש';
+    formTitle.textContent = I18n.t('formNewTitle');
     fTitle.value = '';
     fPrice.value = '';
-    fCategory.value = CATEGORIES[0].id;
+    fCategory.value = CATEGORY_IDS[0];
     fDescription.value = '';
     fSold.checked = false;
     fImages.value = '';
@@ -88,7 +88,7 @@
     if (!item) return;
     editingId = id;
     pendingImages = [...(item.images || [])];
-    formTitle.textContent = 'עריכת פריט';
+    formTitle.textContent = I18n.t('formEditTitle');
     fTitle.value = item.title;
     fPrice.value = item.price;
     fCategory.value = item.category;
@@ -160,7 +160,7 @@
       wrap.className = 'preview-thumb';
       wrap.innerHTML = `
         <img src="${src}" alt="">
-        <button type="button" class="preview-remove" aria-label="הסר תמונה" data-idx="${idx}">×</button>
+        <button type="button" class="preview-remove" aria-label="${I18n.t('removeImage')}" data-idx="${idx}">×</button>
       `;
       imagePreviews.appendChild(wrap);
     });
@@ -192,9 +192,9 @@
       }
     } catch (err) {
       if (String(err).includes('Quota')) {
-        alert('הזיכרון המקומי מלא. נסי להעלות פחות תמונות או למחוק פריטים ישנים.');
+        alert(I18n.t('quotaError'));
       } else {
-        alert('שגיאה בשמירה: ' + err.message);
+        alert(I18n.t('saveError') + err.message);
       }
       return;
     }
@@ -219,18 +219,18 @@
         <div class="admin-card-image">
           ${imgUrl
             ? `<img src="${imgUrl}" alt="">`
-            : `<div class="card-placeholder">אין תמונה</div>`}
-          ${item.sold ? '<span class="badge-sold">נמכר</span>' : ''}
+            : `<div class="card-placeholder">${I18n.t('noImage')}</div>`}
+          ${item.sold ? `<span class="badge-sold">${I18n.t('soldBadge')}</span>` : ''}
         </div>
         <div class="admin-card-body">
           <h4>${escapeHtml(item.title)}</h4>
-          <p class="muted">${escapeHtml(categoryLabel(item.category))} • ${formatPrice(item.price)}</p>
+          <p class="muted">${escapeHtml(I18n.cat(item.category))} • ${formatPrice(item.price)}</p>
           <div class="admin-card-actions">
-            <button class="btn btn-small" data-action="edit" data-id="${item.id}">עריכה</button>
+            <button class="btn btn-small" data-action="edit" data-id="${item.id}">${I18n.t('edit')}</button>
             <button class="btn btn-small btn-ghost" data-action="toggle-sold" data-id="${item.id}">
-              ${item.sold ? 'סמן כזמין' : 'סמן כנמכר'}
+              ${item.sold ? I18n.t('markAvailable') : I18n.t('markSold')}
             </button>
-            <button class="btn btn-small btn-danger" data-action="delete" data-id="${item.id}">מחיקה</button>
+            <button class="btn btn-small btn-danger" data-action="delete" data-id="${item.id}">${I18n.t('deleteItem')}</button>
           </div>
         </div>
       `;
@@ -250,7 +250,7 @@
       Store.update(id, { sold: !item.sold });
       renderAdminGrid();
     } else if (action === 'delete') {
-      if (confirm('למחוק את הפריט הזה?')) {
+      if (confirm(I18n.t('confirmDelete'))) {
         Store.remove(id);
         renderAdminGrid();
       }
@@ -265,6 +265,9 @@
   }
 
   // --- INIT ---
+
+  I18n.applyToDOM();
+  document.getElementById('lang-toggle').addEventListener('click', () => I18n.toggle());
 
   populateCategories();
   if (Auth.isLoggedIn()) {
