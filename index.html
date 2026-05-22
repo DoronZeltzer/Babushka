@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>בבושקה • חנות יד שניה • רגבה</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo-link" href="index.html">
+        <img src="assets/logo.png" alt="בבושקה - חנות יד שניה ברגבה" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-text">
+          <h1>בבושקה</h1>
+          <p>חנות יד שניה ✻ רגבה</p>
+        </div>
+      </a>
+      <nav class="header-nav">
+        <a href="https://www.facebook.com/babushka.regba/" target="_blank" rel="noopener" class="nav-link">פייסבוק</a>
+        <a href="admin.html" class="nav-link nav-link-admin">ניהול</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <h2>חיים שניים לדברים יפים</h2>
+      <p>כל פריט בחנות מחכה לבית חדש. מצאו את מה שאתם אוהבים.</p>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section class="filters" aria-label="סינון לפי קטגוריה">
+      <button class="chip chip-active" data-cat="all">הכל</button>
+      <!-- categories injected by JS -->
+    </section>
+
+    <section id="grid" class="grid" aria-live="polite">
+      <!-- items injected by JS -->
+    </section>
+
+    <p id="empty-state" class="empty-state" hidden>
+      אין כרגע פריטים בקטגוריה הזו. תחזרו לבדוק בקרוב!
+    </p>
+
+  </main>
+
+  <!-- Item detail modal -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="modal-close" data-close aria-label="סגור">×</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>בבושקה • חנות יד שניה ברגבה</p>
+      <p>
+        <a href="https://www.facebook.com/babushka.regba/" target="_blank" rel="noopener">עקבו אחרינו בפייסבוק</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/customer.js"></script>
+</body>
+</html>

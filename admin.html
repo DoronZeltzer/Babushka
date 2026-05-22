@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ניהול • בבושקה</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo-link" href="index.html">
+        <img src="assets/logo.png" alt="בבושקה" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-text">
+          <h1>בבושקה</h1>
+          <p>פאנל ניהול</p>
+        </div>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html" class="nav-link">לאתר →</a>
+        <button id="logout-btn" class="nav-link nav-link-admin" hidden>יציאה</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Login screen -->
+    <section id="login-screen" class="login-card">
+      <h2>כניסת מנהל</h2>
+      <p class="muted">הזיני את הסיסמה כדי לערוך את החנות.</p>
+      <form id="login-form">
+        <label for="password">סיסמה</label>
+        <input type="password" id="password" autocomplete="current-password" required>
+        <button type="submit" class="btn btn-primary">כניסה</button>
+        <p id="login-error" class="error" hidden>סיסמה שגויה</p>
+      </form>
+    </section>
+
+    <!-- Admin panel -->
+    <section id="admin-panel" hidden>
+
+      <div class="admin-toolbar">
+        <h2>הפריטים שלי</h2>
+        <button id="new-item-btn" class="btn btn-primary">+ פריט חדש</button>
+      </div>
+
+      <!-- Item form (shown for new + edit) -->
+      <form id="item-form" class="item-form" hidden>
+        <h3 id="form-title">פריט חדש</h3>
+
+        <div class="form-row">
+          <label for="f-title">שם הפריט *</label>
+          <input type="text" id="f-title" required maxlength="80">
+        </div>
+
+        <div class="form-row form-row-double">
+          <div>
+            <label for="f-price">מחיר (₪) *</label>
+            <input type="number" id="f-price" required min="0" step="1">
+          </div>
+          <div>
+            <label for="f-category">קטגוריה *</label>
+            <select id="f-category" required></select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="f-description">תיאור</label>
+          <textarea id="f-description" rows="4" maxlength="500"></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="f-images">תמונות (אפשר לבחור כמה)</label>
+          <input type="file" id="f-images" accept="image/*" multiple>
+          <div id="image-previews" class="image-previews"></div>
+        </div>
+
+        <div class="form-row form-row-inline">
+          <input type="checkbox" id="f-sold">
+          <label for="f-sold">פריט נמכר (יוצג עם תווית "נמכר")</label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">שמירה</button>
+          <button type="button" id="cancel-btn" class="btn btn-ghost">ביטול</button>
+        </div>
+      </form>
+
+      <div id="admin-grid" class="admin-grid"></div>
+
+      <p id="admin-empty" class="empty-state" hidden>
+        אין עדיין פריטים. לחצי על "פריט חדש" כדי להתחיל.
+      </p>
+
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>בבושקה • פאנל ניהול</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
