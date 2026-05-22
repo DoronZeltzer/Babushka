@@ -8,7 +8,10 @@ const STRINGS = {
     // Meta / titles
     pageTitleCustomer: 'בבושקה • חנות יד שניה • רגבה',
     pageTitleAdmin:    'ניהול • בבושקה',
-    pageTitleContact:  'צור קשר • בבושקה',
+    pageTitleContact:       'צור קשר • בבושקה',
+    pageTitleAccessibility: 'נגישות • בבושקה',
+    pageTitlePrivacy:       'מדיניות פרטיות • בבושקה',
+    pageTitleTerms:         'תנאי שימוש • בבושקה',
 
     // Header
     siteTitle:   'בבושקה',
@@ -92,12 +95,39 @@ const STRINGS = {
     dayThursday:       'יום חמישי',
     dayFriday:         'יום שישי',
     daySaturday:       'שבת',
+
+    // Legal nav
+    navAccessibility:  'נגישות',
+    navPrivacy:        'מדיניות פרטיות',
+    navTerms:          'תנאי שימוש',
+    footerLegalTitle:  'משפטי',
+    skipToContent:     'דלגו לתוכן המרכזי',
+
+    // Cookie banner
+    cookieText:        'האתר משתמש באחסון מקומי (localStorage) כדי לזכור את העדפת השפה והגדרות הנגישות שלכם. אין שימוש בקובצי מעקב או פרסום.',
+    cookieAccept:      'הבנתי',
+    cookieReadMore:    'מדיניות פרטיות',
+
+    // Accessibility widget
+    a11yOpen:          'פתיחת תפריט נגישות',
+    a11yClose:         'סגירה',
+    a11yTitle:         'נגישות',
+    a11yFontPlus:      'הגדלת טקסט',
+    a11yFontMinus:     'הקטנת טקסט',
+    a11yContrast:      'ניגודיות גבוהה',
+    a11yGrayscale:     'גווני אפור',
+    a11yLinks:         'הדגשת קישורים',
+    a11yReset:         'איפוס',
+    a11yStatementLink: 'להצהרת הנגישות המלאה',
   },
 
   en: {
     pageTitleCustomer: 'Babushka • Second-Hand Shop • Regba',
     pageTitleAdmin:    'Admin • Babushka',
-    pageTitleContact:  'Contact • Babushka',
+    pageTitleContact:       'Contact • Babushka',
+    pageTitleAccessibility: 'Accessibility • Babushka',
+    pageTitlePrivacy:       'Privacy Policy • Babushka',
+    pageTitleTerms:         'Terms of Use • Babushka',
 
     siteTitle:   'Babushka',
     taglineHome: 'Second-Hand Shop ✻ Regba',
@@ -173,6 +203,30 @@ const STRINGS = {
     dayThursday:       'Thursday',
     dayFriday:         'Friday',
     daySaturday:       'Saturday',
+
+    // Legal nav
+    navAccessibility:  'Accessibility',
+    navPrivacy:        'Privacy Policy',
+    navTerms:          'Terms of Use',
+    footerLegalTitle:  'Legal',
+    skipToContent:     'Skip to main content',
+
+    // Cookie banner
+    cookieText:        'This site uses browser localStorage to remember your language and accessibility settings. We do not use tracking cookies or advertising.',
+    cookieAccept:      'Got it',
+    cookieReadMore:    'Privacy policy',
+
+    // Accessibility widget
+    a11yOpen:          'Open accessibility menu',
+    a11yClose:         'Close',
+    a11yTitle:         'Accessibility',
+    a11yFontPlus:      'Larger text',
+    a11yFontMinus:     'Smaller text',
+    a11yContrast:      'High contrast',
+    a11yGrayscale:     'Grayscale',
+    a11yLinks:         'Highlight links',
+    a11yReset:         'Reset',
+    a11yStatementLink: 'Full accessibility statement',
   },
 };
 
@@ -230,13 +284,14 @@ const I18n = {
       });
     });
     const page = document.body.dataset.page;
-    if (page === 'admin') {
-      document.title = this.t('pageTitleAdmin');
-    } else if (page === 'contact') {
-      document.title = this.t('pageTitleContact');
-    } else {
-      document.title = this.t('pageTitleCustomer');
-    }
+    const titleKeys = {
+      admin:         'pageTitleAdmin',
+      contact:       'pageTitleContact',
+      accessibility: 'pageTitleAccessibility',
+      privacy:       'pageTitlePrivacy',
+      terms:         'pageTitleTerms',
+    };
+    document.title = this.t(titleKeys[page] || 'pageTitleCustomer');
   },
 };
 
