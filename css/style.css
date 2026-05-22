@@ -100,17 +100,11 @@ h1, h2, h3 {
   display: block;
 }
 
-.logo-text h1 {
-  margin: 0;
-  font-size: 1.6rem;
-  color: var(--brown);
-  letter-spacing: 0.02em;
-}
-.logo-text p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--brown-soft);
-  letter-spacing: 0.05em;
+.logo-wordmark {
+  height: 52px;
+  width: auto;
+  display: block;
+  border-radius: 6px;
 }
 
 .header-nav {
