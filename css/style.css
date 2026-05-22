@@ -5,9 +5,9 @@
    ============================================================ */
 
 :root {
-  --teal:        #8FB1BC;
-  --teal-deep:   #5E8995;
-  --teal-soft:   #BBD0D7;
+  --teal:        #79ABB6;
+  --teal-deep:   #4E808B;
+  --teal-soft:   #B0CED4;
   --cream:       #F2E8D0;
   --cream-light: #FAF4E2;
   --red:         #B84A36;
@@ -93,12 +93,11 @@ h1, h2, h3 {
 .logo-link:hover { text-decoration: none; }
 
 .logo-img {
-  height: 72px;
-  width: 72px;
-  border-radius: 12px;
+  height: 64px;
+  width: auto;
+  border-radius: 10px;
   box-shadow: var(--shadow);
-  object-fit: contain;
-  background: var(--teal);
+  display: block;
 }
 
 .logo-text h1 {
