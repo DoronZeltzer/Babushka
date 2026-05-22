@@ -135,6 +135,16 @@ h1, h2, h3 {
 }
 .nav-link-admin:hover { background: var(--red-dark); color: var(--cream-light); }
 
+.nav-link-fb {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #1877F2;
+  color: #fff;
+}
+.nav-link-fb:hover { background: #155fc4; color: #fff; text-decoration: none; }
+.nav-link-fb svg { display: block; }
+
 .nav-link-lang {
   background: transparent;
   border: 2px solid var(--cream);
